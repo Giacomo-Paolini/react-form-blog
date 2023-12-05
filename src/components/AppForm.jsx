@@ -25,23 +25,35 @@ export default function AppForm() {
 
   return (
     <div>
-      <h2>Aggiungi un titolo</h2>
+      <h2 className="text-4xl mb-4">Aggiungi un titolo</h2>
       <form onSubmit={handleOnSubmit}>
         <input
+          className="border-2 border-gray-400 p-2 mb-2"
           type="text"
           onChange={handleNewTitle}
           value={newTitle}
           id="title"
           placeholder="Title"
         />
-        <button type="submit">Submit</button>
+        <button className="border-2 border-gray-400 p-2 mb-2" type="submit">
+          Submit
+        </button>
       </form>
-      <p>List</p>
-      <ul>
+      <h3 className="text-2xl">List</h3>
+      <ul className="p-4 m-auto">
         {blog.map((title, index) => (
-          <li key={index}>
-            {title}
-            <button onClick={() => deleteTitle(index)}>delete</button>
+          <li className="grid grid-cols-2 gap-2" key={index}>
+            <div className="justify-self-end text-lg font-bold">{title}</div>
+            <button
+              onClick={() => deleteTitle(index)}
+              className="justify-self-start"
+            >
+              <img
+                className="w-6 h-6"
+                src="src/assets/trash.png"
+                alt="Delete"
+              />
+            </button>
           </li>
         ))}
       </ul>
